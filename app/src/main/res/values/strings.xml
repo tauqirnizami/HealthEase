@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">HealthEase</string>
+
+
+    <string name="exercise1">Running</string>
+    <string name="description1">Running and jogging are dynamic cardiovascular exercises that boost endurance, burn calories, and promote overall heart health. These activities engage major muscle groups, including the legs and core, while providing a sense of freedom and stress relief.</string>
+<!--    <string name="day1">Day 1</string>-->
+
+    <string name="exercise2">Cycling</string>
+    <string name="description2">Whether outdoors or on a stationary bike, cycling is an effective cardiovascular exercise that targets the lower body. It improves leg strength, endurance, and can be a convenient and eco-friendly mode of transportation, promoting both physical health and environmental sustainability.</string>
+<!--    <string name="day2">Day 2</string>-->
+
+    <string name="exercise3">Swimming</string>
+    <string name="description3">Swimming offers a low-impact full-body workout, engaging muscles from head to toe. It enhances cardiovascular fitness, builds strength, and improves flexibility. The buoyancy of water reduces stress on joints, making it an ideal exercise for individuals with joint concerns.</string>
+<!--    <string name="day3">Day 3</string>-->
+
+    <string name="exercise4">Skipping</string>
+    <string name="description4">Jumping rope is a simple yet highly effective cardiovascular exercise that enhances coordination, endurance, and agility. It engages the lower body and improves cardiovascular health while also providing a portable and inexpensive workout option.</string>
+<!--    <string name="day4">Day 4</string>-->
+
+    <string name="exercise5">Meditation</string>
+    <string name="description5">While not a physical exercise in the traditional sense, meditation is a powerful practice for mental and emotional well-being. It involves cultivating mindfulness, focus, and relaxation through various techniques like deep breathing, guided visualization, or mantra repetition.</string>
+<!--    <string name="day5">Day 5</string>-->
+
+
+    <string name="exercise6">Pilates</string>
+    <string name="description6">Pilates is a low-impact exercise method that focuses on developing core strength, flexibility, and overall muscle tone. Originating from the work of Joseph Pilates, this practice involves precise and controlled movements performed on a mat or specialized equipment.</string>
+<!--    <string name="day6">Day 6</string>-->
+
+
+    <string name="exercise7">Rowing</string>
+    <string name="description7">Rowing engages the back, legs, and arms, providing a comprehensive cardiovascular and strength workout. It is low-impact, reducing strain on joints, and can be performed on a rowing machine or in a boat on the water. Rowing promotes endurance, muscular balance, and is an effective calorie-burning exercise.</string>
+<!--    <string name="day7">Day 7</string>-->
+
+
+    <string name="exercise8">Climbing</string>
+    <string name="description8">Climbing exercises, whether on rock walls or indoor climbing facilities, engage the entire body. They improve grip strength, endurance, and mental focus. Climbing can be both a challenging sport and a recreational activity, offering a unique way to build strength and overcome obstacles.</string>
+<!--    <string name="day8">Day 8</string>-->
+
+
+    <string name="exercise9">Boxing</string>
+    <string name="description9">Boxing workouts combine cardiovascular exercise with strength training, enhancing agility, coordination, and upper body strength. Whether through traditional boxing drills or fitness classes, this high-intensity activity provides stress relief and a full-body workout, making it a popular choice for those seeking a dynamic and empowering exercise routine.</string>
+<!--    <string name="day9">Day 9</string>-->
+
+
+    <string name="exercise10">Aerobics</string>
+    <string name="description10">Aerobics is a dynamic exercise routine that combines rhythmic movements with music to elevate the heart rate and improve cardiovascular fitness. Typically performed in a group setting, aerobics classes can include a variety of exercises such as dance steps, jumping jacks, and kicks.</string>
+<!--    <string name="day10">Day 10</string>-->
+
+
+    <string name="exercise11">Skiing</string>
+    <string name="description11">Skiing is a popular winter sport that offers a full-body workout while enjoying the outdoors. It engages the lower body muscles, particularly the quadriceps, hamstrings, and glutes, as skiers navigate slopes. Skiing also requires balance, coordination, and core strength.</string>
+<!--    <string name="day11">Day 11</string>-->
+
+
+    <string name="exercise12">Surfing</string>
+    <string name="description12">Surfing is a water sport that not only provides an exhilarating experience but also offers a comprehensive full-body workout. Paddling out to catch waves engages the upper body and core muscles, while the act of riding the waves challenges balance and leg strength. Surfing promotes cardiovascular fitness, improves endurance, and enhances coordination.</string>
+<!--    <string name="day12">Day 12</string>-->
+
+    <string name="sets">Sets per week:\n</string>
+
+</resources>
