@@ -33,7 +33,7 @@ data class BreakfastDiet(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): BreakFast(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)
 
@@ -45,7 +45,7 @@ data class BreakfastFood(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): BreakFast(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)
 
@@ -71,7 +71,7 @@ data class LunchDiet(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): Lunch(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)
 
@@ -83,7 +83,7 @@ data class LunchFood(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): Lunch(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)
 
@@ -110,7 +110,7 @@ data class PostWorkoutDiet(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf(),
     val timeToEatAfterWorkout: String = "20 minutes"
 ): PostWorkout(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames, timeToEatAfterWorkout)
@@ -123,7 +123,7 @@ data class PostWorkoutFood(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf(),
     val timeToEatAfterWorkout: String = "20 minutes"
 ): PostWorkout(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames, timeToEatAfterWorkout)
@@ -150,7 +150,7 @@ data class DinnerDiet(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): Dinner(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)
 
@@ -162,6 +162,6 @@ data class DinnerFood(
     val fatPer100g: Float,
     val otherNutrients: String,
     val instructions: String,
-    val isVeg: Boolean, // Added boolean parameter
+    val isVeg: Boolean,
     val otherNames: MutableList<String> = mutableListOf()
 ): Dinner(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, otherNutrients, instructions, otherNames)

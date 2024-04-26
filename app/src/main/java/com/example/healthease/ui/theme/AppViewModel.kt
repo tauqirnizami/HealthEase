@@ -4,7 +4,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.healthease.DietData.BreakfastDiet
 import com.example.healthease.DietData.DinnerDiet
 import com.example.healthease.DietData.FoodData
@@ -18,11 +17,14 @@ import com.example.healthease.DietData.postWorkoutDiet
 import com.example.healthease.data.AbsExercises
 import com.example.healthease.data.AdductorAbductorLegs
 import com.example.healthease.data.AntDeltsShoulder
+import com.example.healthease.data.AppData
+import com.example.healthease.data.AppDataRepository
 import com.example.healthease.data.BackExercises
 import com.example.healthease.data.BicepsExercises
 import com.example.healthease.data.CalfLegs
 import com.example.healthease.data.ChestExercises
 import com.example.healthease.data.ErectorBack
+import com.example.healthease.data.Exercises
 import com.example.healthease.data.ExtensorsForearms
 import com.example.healthease.data.FlexorsForearms
 import com.example.healthease.data.ForearmsExercises
@@ -49,9 +51,6 @@ import com.example.healthease.data.TransverseAbs
 import com.example.healthease.data.TrapsBack
 import com.example.healthease.data.TricepsExercises
 import com.example.healthease.data.UpperChest
-import com.example.healthease.data.AppData
-import com.example.healthease.data.AppDataRepository
-import com.example.healthease.data.Exercises
 import com.example.healthease.data.gymAbsExercises
 import com.example.healthease.data.gymBackExercises
 import com.example.healthease.data.gymBicepsExercises
@@ -77,7 +76,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.math.ceil
 
 class CalculationsViewModel(
@@ -139,7 +137,6 @@ class CalculationsViewModel(
             goalActLvl,
             false
         )
-//        bmiCalc(goalWeight, height)
     }
 
     fun goalActLvlSet(newGoalActLvl: String) {
@@ -720,7 +717,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -783,7 +780,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -846,7 +843,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -938,7 +935,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -1013,7 +1010,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -1083,7 +1080,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }
@@ -1142,7 +1139,7 @@ class CalculationsViewModel(
                 }
 
                 else -> {
-                    // Ignore other subclasses
+                    // Ignore
                 }
             }
         }

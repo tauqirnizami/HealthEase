@@ -18,97 +18,62 @@ fun StreakCounter(
     val currentDate: String = SimpleDateFormat("dd-MM-yyyy").format(currentRetrievedDate)
 
     var lastDateObject: AppData? = null
-//    var lastDateId: Int = 0
     LaunchedEffect(Unit) {
         lastDateObject = streakCounterViewModel.streakDataHandler()
     }
     var lastDate: String = "00-00-0000"
     if (lastDateObject != null) {
-//        LaunchedEffect(Unit) {
-//            streakCounterViewModel.saveData(type = "lastDate", content = currentDate)
-//            lastDate = currentDate
-//        }
         lastDate = lastDateObject!!.content
     }
-//    LaunchedEffect(Unit) {
-//        lastDateId = streakCounterViewModel.streakDataHandler()!!.id
-//    }
-
 
     var currentStreakObject: AppData? = null
     LaunchedEffect(Unit) {
         currentStreakObject = streakCounterViewModel.streakDataHandler("currentStreak")
     }
     var currentStreak: String = "0"
-//    var streakId: Int = 0
+
     if (currentStreakObject != null) {
-//        LaunchedEffect(Unit) {
-//            streakCounterViewModel.saveData(type = "currentStreak", content = "0")
-//        }
         currentStreak = currentStreakObject!!.content
-//    } else {
     }
-//    LaunchedEffect(Unit) {
-//        streakId = streakCounterViewModel.streakDataHandler("currentStreak")!!.id
-//    }
 
     var currentStreakInt = currentStreak.toInt()
 
-//    val lastDateDay =
-//        lastDate.substring(0, 1) // Extracting 4th and 5th digits (index starts from 0)
-//    val lastDateDayInt = lastDateDay.toInt()
-//    val lastDateMonth =
-//        lastDate.substring(3, 4) // Extracting 4th and 5th digits (index starts from 0)
-//    val lastDateMonthInt = lastDateMonth.toInt()
-//    val lastDateYear =
-//        lastDate.substring(6, 9) // Extracting 4th and 5th digits (index starts from 0)
-//    val lastDateYearInt = lastDateYear.toInt()
-    var lastDateDay: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var lastDateDay: String = ""
     var lastDateDayInt: Int
-    var lastDateMonth: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var lastDateMonth: String = ""
     var lastDateMonthInt: Int
-    var lastDateYear: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var lastDateYear: String = ""
     var lastDateYearInt: Int
 
-    for (i in 0 .. 1){
+    for (i in 0..1) {
         lastDateDay += lastDate[i]
     }
     lastDateDayInt = lastDateDay.toInt()
-    for (i in 3 .. 4){
+    for (i in 3..4) {
         lastDateMonth += lastDate[i]
     }
     lastDateMonthInt = lastDateMonth.toInt()
-    for (i in 6 .. 9){
+    for (i in 6..9) {
         lastDateYear += lastDate[i]
     }
     lastDateYearInt = lastDateYear.toInt()
 
-//    val currentDateDay =
-//        currentDate.substring(0, 1) // Extracting 4th and 5th digits (index starts from 0)
-//    val currentDateDayInt = currentDateDay.toInt()
-//    val currentDateMonth =
-//        currentDate.substring(3, 4) // Extracting 4th and 5th digits (index starts from 0)
-//    val currentDateMonthInt = currentDateMonth.toInt()
-//    val currentDateYear =
-//        currentDate.substring(6, 9) // Extracting 4th and 5th digits (index starts from 0)
-//    val currentDateYearInt = currentDateYear.toInt()
-
-    var currentDateDay: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var currentDateDay: String = ""
     var currentDateDayInt: Int
-    var currentDateMonth: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var currentDateMonth: String = ""
     var currentDateMonthInt: Int
-    var currentDateYear: String = "" // Extracting 4th and 5th digits (index starts from 0)
+    var currentDateYear: String = ""
     var currentDateYearInt: Int
 
-    for (i in 0 .. 1){
+    for (i in 0..1) {
         currentDateDay += currentDate[i]
     }
     currentDateDayInt = currentDateDay.toInt()
-    for (i in 3 .. 4){
+    for (i in 3..4) {
         currentDateMonth += currentDate[i]
     }
     currentDateMonthInt = currentDateMonth.toInt()
-    for (i in 6 .. 9){
+    for (i in 6..9) {
         currentDateYear += currentDate[i]
     }
     currentDateYearInt = currentDateYear.toInt()
@@ -183,7 +148,6 @@ fun StreakCounter(
                 )
             }
         }
-
     }
     return currentStreak
 }

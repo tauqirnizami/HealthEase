@@ -142,6 +142,7 @@ val homeLegExercises: List<LegExercises> = listOf(
     jumpRope,
     stairClimbing,
     wallCalfStretch,
+    squats,
     donkeyKicks,
     fireHydrants,
     hipThrusts,
@@ -258,13 +259,11 @@ val homeAbsExercises: List<AbsExercises> = listOf(
 )
 
 
-
 /***
  * GYM EXERCISES
  * GYM EXERCISES
  * GYM EXERCISES
  */
-
 
 
 val gymChestExercises: List<ChestExercises> = listOf(
@@ -357,6 +356,7 @@ val gymLegsExercises: List<LegExercises> = listOf(
     donkeyCalfRaises,
     calfPressMachine,
     barbellHipThrusts,
+    cableKickbacks,
     cablePullThroughs,
     smithMachineSquats,
     cableHipAbduction,

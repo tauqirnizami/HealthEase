@@ -1,12 +1,10 @@
 package com.example.healthease.ui.theme
 
-//import androidx.compose.foundation.layout.FlowRowScopeInstance.align
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,7 +25,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.R
 
 @Composable
@@ -58,74 +55,6 @@ fun ThreeButtonScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom
         ) {
-//            Button(
-//                modifier = modifier
-//                    .fillMaxWidth()
-//                    .padding(top = 175.dp, bottom = 15.dp, start = 75.dp, end = 75.dp)
-////                    .fillMaxHeight(0.09f)
-//                    .weight(1f),
-//                onClick = { /*onClick*/ },
-//                shape = CutCornerShape(bottomStart = 13.dp, topEnd = 13.dp, topStart = 5.dp, bottomEnd = 5.dp),
-//                elevation = ButtonDefaults.buttonElevation(
-//                    defaultElevation = 10.dp,
-//                    pressedElevation = 5.dp,
-//                )
-//            ) {
-//                Text(
-//                    text = button1,
-//                    fontSize = 21.4.sp,
-//                    fontFamily = FontFamily(Font(R.font.facon)),
-//                    textAlign = TextAlign.Center
-//                )
-//            }
-//
-//
-//
-//            Button(
-//                modifier = modifier
-//                    .fillMaxWidth()
-//                    .padding(top = 175.dp, bottom = 75.dp, start = 75.dp, end = 75.dp)
-////                    .fillMaxHeight(0.115f),
-//                    .weight(1f),
-//                onClick = { /*onClick*/ },
-//                shape = CutCornerShape(bottomStart = 13.dp, topEnd = 13.dp, topStart = 5.dp, bottomEnd = 5.dp),
-//                elevation = ButtonDefaults.buttonElevation(
-//                    defaultElevation = 10.dp,
-//                    pressedElevation = 5.dp,
-//                )
-//            ) {
-//                Text(
-//                    text = button2,
-//                    fontSize = 21.4.sp,
-//                    fontFamily = FontFamily(Font(R.font.facon)),
-//                    textAlign = TextAlign.Center
-//                )
-//            }
-//
-//
-//
-//            Button(
-//                modifier = modifier
-//                    .fillMaxWidth()
-//                    .padding(top = 115.dp, bottom = 115.dp, start = 75.dp, end = 75.dp)
-////                    .fillMaxHeight(0.184f)
-//                    .weight(1f),
-//                onClick = { /*onClick*/ },
-//                shape = CutCornerShape(bottomStart = 13.dp, topEnd = 13.dp, topStart = 5.dp, bottomEnd = 5.dp),
-//                elevation = ButtonDefaults.buttonElevation(
-//                    defaultElevation = 10.dp,
-//                    pressedElevation = 5.dp,
-//                )
-//            ) {
-//                Text(
-//                    text = button3,
-//                    fontSize = 21.4.sp,
-//                    fontFamily = FontFamily(Font(R.font.facon)),
-//                    textAlign = TextAlign.Center
-//                )
-//            }
-//        }
-
             Button(
                 onClick = { onClick1() },
                 modifier = modifier.fillMaxWidth(),
@@ -274,16 +203,14 @@ fun WorkoutPlannerButtonScreen(
     onClick1: () -> Unit,
     onClick2: () -> Unit,
     onClick: () -> Unit,
-    workoutPlannerViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory),
+//    workoutPlannerViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory),
 
     ) {
     ThreeButtonScreen(
         onClick1 = {
-//            workoutPlannerViewModel.levelSet(0)
             onClick1()},
         onClick2 = onClick2,
         onClick3 = {
-//            workoutPlannerViewModel.levelSet(4)
             onClick()}, modifier = modifier,
         button1 = "On Vacation Routine",
         button2 = "Medium Level",
@@ -297,15 +224,15 @@ fun MediumLevelButtonScreen(
     onClick1: () -> Unit,
     onClick2: () -> Unit,
     onClick: () -> Unit,
-    MediumLevelSelectionViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory),
+//    MediumLevelSelectionViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory),
 
     ) {
     ThreeButtonScreen(
-        onClick1 = {MediumLevelSelectionViewModel.levelSet(1)
+        onClick1 = {
             onClick1()},
-        onClick2 = {MediumLevelSelectionViewModel.levelSet(2)
+        onClick2 = {
             onClick2()},
-        onClick3 = {MediumLevelSelectionViewModel.levelSet(3)
+        onClick3 = {
             onClick()}, modifier = modifier,
         button1 = "Intermediate I",
         button2 = "Intermediate II",

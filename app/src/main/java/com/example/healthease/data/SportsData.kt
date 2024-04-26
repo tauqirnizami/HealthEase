@@ -35,10 +35,6 @@ object SportsDatabase {
             sportsName = "Surfing",
             sportsDescription = "Surfing is a surface water sport in which an individual, referred to as a surfer, rides on the forward or deep face of a moving wave, usually carrying the surfer towards the shore."
         ),
-//        Sports(
-//            sportsName = "Yoga",
-//            sportsDescription = "Yoga is a group of physical, and mental practices that originated in ancient India. It includes various postures (asanas), breathing exercises (pranayama), and meditation techniques."
-//        ),
         Sports(
             sportsName = "Golf",
             sportsDescription = "Golf is a club-and-ball sport in which players use various clubs to hit balls into a series of holes on a course in as few strokes as possible."

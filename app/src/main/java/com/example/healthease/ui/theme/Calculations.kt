@@ -175,12 +175,10 @@ fun CalculationsScreen(
                     onAgeChange = { calculationsViewModel.ageSet(it) },
                     onGenderSelectionChange = { calculationsViewModel.setGender1(it) },
                     onActLvlSelectionChange = { calculationsViewModel.setActLvl1(it) },
-//                goalWeight = calculationsViewModel.goalWeight
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-//        val calories = calcounter(weight, height, age, gender, actLvlFloat)
                 Column(
                     modifier = modifier
                         .padding(start = 27.dp, end = 11.dp)
@@ -219,7 +217,6 @@ fun CalculationsScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-//        val goalCalories = calcounter(goalWeight, height, age, gender, actLvlFloat)
                 Column(
                     modifier = modifier
                         .padding(start = 27.dp, end = 11.dp)
@@ -254,8 +251,6 @@ fun CalculationsScreen(
                 modifier = modifier
                     .padding(top = 11.dp, bottom = 11.dp, start = 13.dp, end = 13.dp)
             ) {
-//        val ageFloat = age.toFloatOrNull() ?: 0.0f
-//                val waterNeeded = calculationsViewModel.waterNeeded(age, calories)
                 Text(text = "Fluid (water) required per day for a person who spends ${calculationsUiState.currentCaloryNeed} Kcal per day would be:")
                 OutlinedCard(
                     modifier = modifier
@@ -270,7 +265,6 @@ fun CalculationsScreen(
                 }
 
                 Spacer(modifier = Modifier.height(31.dp))
-//                val goalWaterNeeded = calculationsViewModel.waterNeeded(age, goalCalories)
                 Text(text = "Fluid (water) that would be required at age ${calculationsViewModel.age} if you spend ${calculationsUiState.goalCaloryNeed} Kcal per day:")
                 OutlinedCard(
                     modifier = modifier
@@ -292,7 +286,6 @@ fun CalculationsScreen(
 @Composable
 fun EditField(
     label: String,
-//    @DrawableRes leadingIcon: Int,
     keyboardOptions: KeyboardOptions,
     value: String,
     onValueChanged: (String) -> Unit,
@@ -301,7 +294,6 @@ fun EditField(
     OutlinedTextField(
         value = value,
         singleLine = true,
-//        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
         modifier = modifier
             .padding(start = 31.dp, end = 21.dp),
         onValueChange = onValueChanged,

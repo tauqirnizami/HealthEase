@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
@@ -41,9 +40,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.healthease.data.AppData
 import com.example.healthease.DisplayInstructions
 import com.example.healthease.ExpandInfoButton
+import com.example.healthease.data.AppData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -211,9 +210,7 @@ fun WorkoutSearchScreen(
                     }
             }
 
-            // Display the data
             Column {
-//                Text("Data List:")
                 var i = 0
                 dataList.forEach { data ->
                     i++
@@ -227,8 +224,10 @@ fun WorkoutSearchScreen(
                                 .padding(start = 13.dp, bottom = 17.dp, end = 17.dp, top = 5.dp)
                         ) {
 
-                            Text(data.content,
-                                modifier = modifier.padding(11.dp))
+                            Text(
+                                data.content,
+                                modifier = modifier.padding(11.dp)
+                            )
                             IconButton(onClick =
                             { deleteDialog = true }
                             ) {
@@ -292,16 +291,16 @@ fun DeleteConfirmationDialog(
         },
         confirmButton = {
             TextButton(onClick = {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        deleteData(
-                            id,
-                            type,
-                            content,
-                            viewModel
-                        )
-                        onClose()
-                    }
-                }) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    deleteData(
+                        id,
+                        type,
+                        content,
+                        viewModel
+                    )
+                    onClose()
+                }
+            }) {
                 Text(text = "Delete")
             }
         }
@@ -321,25 +320,17 @@ fun HomeOrGym(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier
-//            .fillMaxWidth()
-//            .size(48.dp)
-            ,
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Text(text = text,
-//            Modifier.weight(2f)
-            )
-        
+        Text(text = text)
+
         Spacer(modifier = Modifier.width(90.dp))
-        
+
         Switch(
             modifier = Modifier
-//                .fillMaxWidth()
-                .wrapContentWidth(Alignment.End)
-//                .weight(1f)
-            ,
+                .wrapContentWidth(Alignment.End),
             checked = open,
             onCheckedChange = onChanged,
         )

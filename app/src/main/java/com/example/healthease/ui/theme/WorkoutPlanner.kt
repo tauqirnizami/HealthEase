@@ -28,6 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.healthease.ExpandInfoButton
+import com.example.healthease.R
 import com.example.healthease.data.AbsExercises
 import com.example.healthease.data.BackExercises
 import com.example.healthease.data.BicepsExercises
@@ -53,8 +55,6 @@ import com.example.healthease.data.homeForearmExercises
 import com.example.healthease.data.homeLegExercises
 import com.example.healthease.data.homeShoulderExercises
 import com.example.healthease.data.homeTricepsExercises
-import com.example.healthease.ExpandInfoButton
-import com.example.healthease.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -79,7 +79,6 @@ fun WorkoutPlanner(
     var forearmsWorkout by remember { mutableStateOf<List<ForearmsExercises>>(emptyList()) }
     var legsWorkout by remember { mutableStateOf<List<LegExercises>>(emptyList()) }
 
-//    Text(text = "Not Started")
     /***
      * 1 = Abs
      * 2 = Back
@@ -102,49 +101,40 @@ fun WorkoutPlanner(
 
     LaunchedEffect(Unit) {
         CoroutineScope(Dispatchers.Default).launch {
-            // Call your suspend functions here
+
             chestWorkout = workoutPlannerViewModel.selectChestExercises(
                 homeOrGym = if (home) homeChestExercises else gymChestExercises,
-//                intensity,
                 setsMap = maxChestSets
             )
             backWorkout = workoutPlannerViewModel.selectBackExercises(
                 homeOrGym = if (home) homeBackExercises else gymBackExercises,
-//                intensity,
                 setsMap = maxBackSets
             )
             tricepsWorkout = workoutPlannerViewModel.selectTricepsExercises(
                 homeOrGym = if (home) homeTricepsExercises else gymTricepsExercises,
-//                intensity,
                 setsMap = maxTricepsSets
 
             )
             shoulderWorkout = workoutPlannerViewModel.selectShoulderExercises(
                 homeOrGym = if (home) homeShoulderExercises else gymShoulderExercises,
-//                intensity,
                 setsMap = maxShoulderSets
             )
             bicepsWorkout = workoutPlannerViewModel.selectBicepsExercises(
                 homeOrGym = if (home) homeBicepsExercises else gymBicepsExercises,
-//                intensity,
                 setsMap = maxBicepsSets
             )
             absWorkout = workoutPlannerViewModel.selectAbsExercises(
                 homeOrGym = if (home) homeAbsExercises else gymAbsExercises,
-//                intensity,
                 setsMap = maxAbsSets
             )
             forearmsWorkout = workoutPlannerViewModel.selectForearmsExercises(
                 homeOrGym = if (home) homeForearmExercises else gymForearmsExercises,
-//                intensity,
                 setsMap = maxForearmsSets
             )
             legsWorkout = workoutPlannerViewModel.selectLegExercises(
                 homeOrGym = if (home) homeLegExercises else gymLegsExercises,
-//                intensity,
                 setsMap = maxLegsSets
             )
-            // Add more suspend function calls as needed
         }
     }
 
@@ -158,8 +148,10 @@ fun WorkoutPlanner(
                 modifier
                     .padding(top = 11.dp, bottom = 31.dp, start = 5.dp, end = 5.dp)
             ) {
-                Column(modifier = modifier
-                    .padding(top = 11.dp, bottom = 11.dp, start = 5.dp, end = 5.dp)) {
+                Column(
+                    modifier = modifier
+                        .padding(top = 11.dp, bottom = 11.dp, start = 5.dp, end = 5.dp)
+                ) {
                     Text(text = "For weight Loss, reduce the given number of sets, and do more cardio.")
                     Text(text = "Cardio includes exercises such as:")
                     Text(text = "Jumping Jacks, Burpees, Jumping Lunges")
@@ -519,7 +511,11 @@ fun WorkoutPlanner(
          * Forearms
          */
         contentStr =
-            contentStr + "\n\n*FOREARAMS*\n" + "Sets Per Week: Flexors = ${maxForearmsSets.getValue("maxFlexorsCount")}$advancePlus|" +
+            contentStr + "\n\n*FOREARAMS*\n" + "Sets Per Week: Flexors = ${
+                maxForearmsSets.getValue(
+                    "maxFlexorsCount"
+                )
+            }$advancePlus|" +
                     "Extensors = ${maxForearmsSets.getValue("maxExtensorsCount")}$advancePlus"
         for (item in forearmsWorkout) {
             contentStr = contentStr + "\n" + item.name0 + "(${item.muscleSubGroup0})"
@@ -538,7 +534,11 @@ fun WorkoutPlanner(
             contentStr = contentStr + "\n" + item.name0 + "(${item.muscleSubGroup0})"
         }
 
-        DataEntryBody(type = "workoutRoutine", content = contentStr, text = "Save this workout plan")
+        DataEntryBody(
+            type = "workoutRoutine",
+            content = contentStr,
+            text = "Save this workout plan"
+        )
         Button(
             onClick = onClick,
             modifier = modifier
@@ -602,6 +602,6 @@ fun WorkoutPrint(
 @Composable
 fun WorkoutPlannerPreview() {
     HealthEaseTheme {
-//        WorkoutPlanner(intensity = 1)
+        WorkoutPlanner(onClick = {})
     }
 }

@@ -45,8 +45,6 @@ fun MotivationScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-//        Spacer(modifier = Modifier.height(57.dp))
-
         Card(modifier = modifier) {
 
             Row(
@@ -80,7 +78,6 @@ fun MotivationScreen(
 
         Spacer(modifier = Modifier.height(61.dp))
 
-//        val newIndex =
         Button(onClick = {motivationViewModel.currentIndexing()}) {
             Text(text = "Get a New Quote")
         }

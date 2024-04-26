@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AppDataDao {
-
     @Upsert
     suspend fun upsert(appData: AppData)
 
@@ -17,11 +16,4 @@ interface AppDataDao {
 
     @Query("SELECT * from appData WHERE type = :type ORDER BY id DESC")
     fun getData(type: String): Flow<List<AppData>>
-
-//    @Query("SELECT * FROM appData WHERE type = :type ORDER BY id DESC LIMIT 1")
-//    suspend fun getLastDateData(type: String): AppData?
-//
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    suspend fun insertIfNotExists(appData: AppData)
-
 }

@@ -12,14 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,15 +33,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.healthease.DietData.BreakfastDiet
-import com.example.healthease.DietData.DinnerDiet
-import com.example.healthease.DietData.FoodData
-import com.example.healthease.DietData.LunchDiet
-import com.example.healthease.DietData.PostWorkout
-import com.example.healthease.DietData.breakfastDiet
-import com.example.healthease.DietData.dinnerDiet
-import com.example.healthease.DietData.lunchDiet
-import com.example.healthease.DietData.postWorkoutDiet
 import com.example.healthease.data.AbsExercises
 import com.example.healthease.data.BackExercises
 import com.example.healthease.data.BicepsExercises
@@ -73,7 +62,7 @@ import com.example.healthease.data.homeTricepsExercises
 @Composable
 fun ExploreExercises(
     modifier: Modifier = Modifier,
-    onSearchClick:()->Unit
+    onSearchClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -83,33 +72,10 @@ fun ExploreExercises(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(21.dp))
-//        var dialogue by remember {
-//            mutableStateOf(false)
-//        }
-//        Row(
-//            modifier = modifier,
-//            verticalAlignment = Alignment.CenterVertically,
-//            horizontalArrangement = Arrangement.Center
-//        ) {
-//            IconButton(onClick = { dialogue = !dialogue }) {
-//                Icon(
-//                    imageVector = Icons.Default.Info,
-//                    contentDescription = "Information Regarding Search Algorithm"
-//                )
-//            }
 
         OutlinedButton(onClick = { onSearchClick() }) {
             Text(text = "Search a particular Exercise")
         }
-
-//            if (dialogue) {
-//                VegInfoDialog(
-//                    text = "1. You may even search some casual or unhealthy dishes here for calorie tracking purpose." +
-//                            "\n" +
-//                            "2. Top results prioritize exact name matches, while lower results may include secondary name matches or matches based on ingredients.",
-//                    onClose = { dialogue = !dialogue })
-//            }
-//    }
 
         Spacer(modifier = Modifier.height(51.dp))
 
@@ -243,48 +209,7 @@ fun ExploreExercises(
 
         Spacer(modifier = Modifier.height(27.dp))
 
-        DisplayExerciseList(title = "Chest Exercises", list = absExercises)
-//        val lunchList = mutableListOf<LunchDiet>()
-//        if (atHome) {
-//            lunchDiet.shuffled().forEach() { item ->
-//                if (item.isVeg)
-//                    lunchList.add(item)
-//            }
-//        } else {
-//            lunchList.addAll(lunchDiet.shuffled())
-//        }
-//
-//        Spacer(modifier = Modifier.height(51.dp))
-//
-//        DisplayList(title = "Diet Lunch Dishes", list = lunchList)
-//
-//        val postWorkoutList = mutableListOf<PostWorkout>()
-//        if (atHome) {
-//            postWorkoutDiet.shuffled().forEach() { item ->
-//                if (item.isVeg)
-//                    postWorkoutList.add(item)
-//            }
-//        } else {
-//            postWorkoutList.addAll(postWorkoutDiet.shuffled())
-//        }
-//
-//        Spacer(modifier = Modifier.height(51.dp))
-//
-//        DisplayList(title = "Diet Post Workout Meals", list = postWorkoutList)
-//
-//        val dinnerList = mutableListOf<DinnerDiet>()
-//        if (atHome) {
-//            dinnerDiet.shuffled().forEach() { item ->
-//                if (item.isVeg)
-//                    dinnerList.add(item)
-//            }
-//        } else {
-//            dinnerList.addAll(dinnerDiet.shuffled())
-//        }
-//
-//        Spacer(modifier = Modifier.height(51.dp))
-//
-//        DisplayList(title = "Diet Dinner Dishes", list = dinnerList)
+        DisplayExerciseList(title = "Abs Exercises", list = absExercises)
     }
 }
 
@@ -363,11 +288,6 @@ fun DisplayExerciseList(
 
                                 DisplayItem(text = "Muscle Sub Group: ${list[i].muscleSubGroup1}")
 
-//                                DisplayItem(text = "Can do at home: ${if (list[i] is )}")
-
-//                                DisplayItem(text = "Fat per 100g = ${list[i].fatPer100g1}")
-
-
                                 OutlinedButton(onClick = {
                                     expanded = !expanded
                                     dietItem = list[i]
@@ -384,7 +304,6 @@ fun DisplayExerciseList(
                                         )
                                     }
                                 }
-//                                }
                             }
                         }
                     }
@@ -394,19 +313,12 @@ fun DisplayExerciseList(
                             .clickable(onClick = { completeList = !completeList }),
                         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp) // Set desired elevation
                     ) {
-                        Text(text = "\n.\n.\n.\n",
+                        Text(
+                            text = "\n.\n.\n.\n",
                             modifier = modifier
-                                .padding(start = 11.dp, end = 11.dp, top = 2.dp, bottom = 2.dp))
+                                .padding(start = 11.dp, end = 11.dp, top = 2.dp, bottom = 2.dp)
+                        )
                     }
-//                    OutlinedButton(
-//                        onClick = { completeList = !completeList },
-//                        modifier = modifier.padding(0.dp)
-//                    ) {
-//                        Text(
-//                            text = "\n.\n.\n.\n",
-//                            modifier = modifier.padding(0.dp)
-//                        )
-//                    }
                 }
             } else if (completeList) {
                 Column(
@@ -447,13 +359,6 @@ fun DisplayExerciseList(
                                     DisplayItem(text = "Muscle Group: ${item.muscle1}")
 
                                     DisplayItem(text = "Muscle Sub Group: ${item.muscleSubGroup1}")
-//                                    DisplayItem(text = "Total Calories per 100g = ${item.caloriesPer100g1}")
-//
-//                                    DisplayItem(text = "Carbs per 100g = ${item.carbsPer100g1}")
-//
-//                                    DisplayItem(text = "Protein per 100g = ${item.proteinPer100g1}")
-//
-//                                    DisplayItem(text = "Fat per 100g = ${item.fatPer100g1}")
 
                                     Spacer(modifier = Modifier.height(7.dp))
                                 }
@@ -488,25 +393,6 @@ fun DisplayExerciseList(
     }
 }
 
-//@Composable
-//fun DisplayItem(
-//    modifier: Modifier = Modifier,
-//    text: String
-//) {
-//    Text(
-//        text = text,
-//        modifier = modifier
-//            .padding(
-//                top = 1.dp,
-//                start = 9.dp,
-//                end = 9.dp,
-//                bottom = 2.dp
-//            ),
-//        fontSize = 14.sp
-////                                    textAlign = TextAlign.Center
-//    )
-//}
-
 @Composable
 fun DisplayExerciseItemScreen(
     modifier: Modifier = Modifier,
@@ -515,9 +401,7 @@ fun DisplayExerciseItemScreen(
 ) {
     Column(
         modifier = modifier
-            .padding(31.dp)
-//            .verticalScroll(rememberScrollState())
-        ,
+            .padding(31.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -548,21 +432,6 @@ fun DisplayExerciseItemScreen(
             modifier = modifier.padding(7.dp),
             textAlign = TextAlign.Justify
         )
-//        Text(
-//            text = "Total Carbs per 100 gram = ${item.carbsPer100g1}",
-//            modifier = modifier.padding(7.dp),
-//            textAlign = TextAlign.Justify
-//        )
-//        Text(
-//            text = "Total Fat per 100 gram = ${item.fatPer100g1}",
-//            modifier = modifier.padding(7.dp),
-//            textAlign = TextAlign.Justify
-//        )
-//        Text(
-//            text = "Other Nutrients = ${item.otherNutrients1}",
-//            modifier = modifier.padding(7.dp),
-//            textAlign = TextAlign.Justify
-//        )
 
         Spacer(modifier = Modifier.height(33.dp))
 
@@ -587,7 +456,7 @@ fun DisplayExerciseItemScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun ExploreExercisesScreenPreview(){
+fun ExploreExercisesScreenPreview() {
     HealthEaseTheme {
         ExploreExercises(onSearchClick = {})
     }

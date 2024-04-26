@@ -50,21 +50,24 @@ fun StreakCounterScreen(
             val currentStreak: String
             if (yesOrNo) {
                 currentStreak = StreakCounter()
-                Text(text = "Congratulations! Your have a",
+                Text(
+                    text = "Congratulations! Your have a",
                     modifier = modifier
                         .padding(11.dp),
                     textAlign = TextAlign.Center,
                     fontSize = 21.sp,
                     fontWeight = FontWeight.SemiBold
                 )
-                Text(text = currentStreak,
+                Text(
+                    text = currentStreak,
                     modifier = modifier
                         .padding(7.dp),
                     textAlign = TextAlign.Center,
                     fontSize = 151.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Text(text = "days of streak!",
+                Text(
+                    text = "days of streak!",
                     modifier = modifier
                         .padding(11.dp),
                     textAlign = TextAlign.Center,
@@ -79,7 +82,7 @@ fun StreakCounterScreen(
                     dateData = streakCounterScreenViewModel.streakDataHandler()
                 }
                 var streakData: AppData? = null
-                LaunchedEffect (Unit) {
+                LaunchedEffect(Unit) {
                     streakData = streakCounterScreenViewModel.streakDataHandler("currentStreak")
                 }
 
@@ -100,20 +103,24 @@ fun StreakCounterScreen(
                         )
                     }
                 }
-                Text(text = "Your have a",
+                Text(
+                    text = "Your have a",
                     modifier = modifier
                         .padding(11.dp),
                     textAlign = TextAlign.Center,
                     fontSize = 21.sp,
                     fontWeight = FontWeight.SemiBold
                 )
-                Text(text = currentStreak,
+                Text(
+                    text = currentStreak,
                     modifier = modifier
                         .padding(7.dp),
                     textAlign = TextAlign.Center,
                     fontSize = 151.sp,
-                    fontWeight = FontWeight.Bold)
-                Text(text = "days of streak!",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "days of streak!",
                     modifier = modifier
                         .padding(11.dp),
                     textAlign = TextAlign.Center,
@@ -156,7 +163,7 @@ fun StreakCounterScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun StreakCounterScreenPreview(){
+fun StreakCounterScreenPreview() {
     HealthEaseTheme {
         StreakCounterScreen()
     }

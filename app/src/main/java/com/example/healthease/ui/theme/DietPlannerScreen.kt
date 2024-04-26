@@ -37,12 +37,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.healthease.data.AppData
 import com.example.healthease.DisplayInstructions
 import com.example.healthease.ExpandInfoButton
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.healthease.data.AppData
 
 @Composable
 fun DietSearchScreen(
@@ -97,15 +94,9 @@ fun DietSearchScreen(
                 modifier = modifier
                     .padding(start = 31.dp, end = 31.dp)
             ) {
-//                Column(modifier) {
                 IconButton(onClick = { vegInstructions = !vegInstructions }) {
                     Icon(Icons.Default.Info, contentDescription = "Add something")
                 }
-//                    if (vegInstructions) {
-////                        Text(text = "Veg diet includes diet for Lacto-Veg people. I.e., it includes vegetables, dairy items, etc. but excludes things such as meat, poultry items, eggs, etc.")
-//
-//                    }
-//                }
                 if (vegInstructions) {
                     VegInfoDialog(text = "Veg diet includes diet for Lacto-Veg people. I.e., it includes vegetables," +
                             "dairy items, etc. but excludes things such as meat, poultry items, eggs, etc.",
@@ -198,9 +189,7 @@ fun DietSearchScreen(
                     }
             }
 
-            // Display the data
             Column {
-//                Text("Data List:")
                 var i = 0
                 dataList.forEach { data ->
                     i++
@@ -219,7 +208,6 @@ fun DietSearchScreen(
                                 modifier = modifier.padding(11.dp)
                             )
                             IconButton(onClick = {
-//                                CoroutineScope(Dispatchers.IO).launch {  deleteData(data.id, data.type, data.content, dietSearchViewModel) }
                                 deleteDialog = true
                             }) {
                                 Icon(

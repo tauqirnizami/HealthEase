@@ -16,20 +16,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.healthease.ui.theme.CalculationsScreen
-import com.example.healthease.ui.theme.DietSearchScreen
-import com.example.healthease.ui.theme.ExerciseSearchScreen
-import com.example.healthease.ui.theme.ExploreDishes
-import com.example.healthease.ui.theme.ExploreExercises
 import com.example.healthease.ui.theme.HealthEase
 import com.example.healthease.ui.theme.HealthEaseTheme
-import com.example.healthease.ui.theme.PostureScreen
-import com.example.healthease.ui.theme.SearchFoodItem
-import com.example.healthease.ui.theme.StartScreen
-import com.example.healthease.ui.theme.WorkoutPlanner
-import com.example.healthease.ui.theme.WorkoutSearchScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,16 +30,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-//                    WorkoutPlanner(intensity = 4)
-//                    WorkoutSearchScreen(intensity = 1)
-//                    PostureScreen()
-//                    ExploreDishes()
-//DietSearchScreen()
-//                    SearchFoodItem()
-// DietSearchScreen()
-//ExploreExercises()
-//                ExerciseSearchScreen()
-//                    StartScreen()
                     HealthEase(navController = rememberNavController())
                 }
             }
@@ -94,12 +73,3 @@ fun DisplayInstructions(
         )
     }
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    HealthEaseTheme {
-//        Greeting("Android")
-//    }
-//}

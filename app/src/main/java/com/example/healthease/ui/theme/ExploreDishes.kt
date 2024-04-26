@@ -1,8 +1,5 @@
 package com.example.healthease.ui.theme
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -33,7 +30,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -98,7 +94,6 @@ fun ExploreDishes(
         HomeOrGym(text = "Only Veg", open = vegOrNot, onChanged = { vegOrNot = !vegOrNot })
 
         val breakfastList = mutableListOf<BreakfastDiet>()
-//        val breakfastList by remember { mutableStateOf<MutableList<BreakfastDiet>>(mutableListOf()) }
         if (vegOrNot) {
             breakfastDiet.shuffled().forEach() { item ->
                 if (item.isVeg)
@@ -260,21 +255,12 @@ fun DisplayList(
                         modifier = Modifier
                             .padding(vertical = 8.dp, horizontal = 16.dp)
                             .clickable(onClick = { completeList = !completeList }),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp) // Set desired elevation
+                        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
                     ) {
                         Text(text = "\n.\n.\n.\n",
                             modifier = modifier
                                 .padding(start = 11.dp, end = 11.dp, top = 2.dp, bottom = 2.dp))
                     }
-//                    OutlinedButton(
-//                        onClick = { completeList = !completeList },
-//                        modifier = modifier.padding(0.dp)
-//                    ) {
-//                        Text(
-//                            text = "\n.\n.\n.\n",
-//                            modifier = modifier.padding(0.dp)
-//                        )
-//                    }
                 }
             } else if (completeList) {
                 Column(
@@ -368,7 +354,6 @@ fun DisplayItem(
                 bottom = 2.dp
             ),
         fontSize = 14.sp
-//                                    textAlign = TextAlign.Center
     )
 }
 
@@ -380,9 +365,7 @@ fun DisplayItemScreen(
 ) {
     Column(
         modifier = modifier
-            .padding(31.dp)
-//            .verticalScroll(rememberScrollState())
-        ,
+            .padding(31.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

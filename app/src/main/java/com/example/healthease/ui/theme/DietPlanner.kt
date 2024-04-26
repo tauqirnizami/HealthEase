@@ -15,7 +15,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,8 +36,6 @@ fun DietPlanner(
     isVeg: Boolean = false,
     onClick: () -> Unit
 ) {
-    val dietPlannerUiState by dietPlannerViewModel.uiState.collectAsState()
-
     val diet = dietPlannerViewModel.dietSelection(isVeg = isVeg)
 
     Column(
@@ -248,6 +245,6 @@ fun DietPrint(
 @Composable
 fun DietPlannerPreview() {
     HealthEaseTheme {
-//        DietPlanner()
+        DietPlanner(onClick = {})
     }
 }
