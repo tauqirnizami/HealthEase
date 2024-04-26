@@ -76,7 +76,7 @@ fun GameTopAppBar(
                 }
                 if (disclaimer){
                     VegInfoDialog(
-                        text = "As much as the gathered info of the app belongs to reliable sources," +
+                        text = "Disclaimer:\nAs much as the gathered info of the app belongs to reliable sources," +
                                 " it is always recommended to seek professional help for personalized training" +
                                 " and Diet Plans. Also, Follow the diet plan carefully, the diet part is still" +
                                 "under development",
