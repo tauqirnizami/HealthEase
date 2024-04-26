@@ -5,11 +5,19 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -60,6 +68,20 @@ fun GameTopAppBar(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                var disclaimer: Boolean by remember {
+                    mutableStateOf(false)
+                }
+                IconButton(onClick = { disclaimer = !disclaimer }) {
+                    Icon(imageVector = Icons.Default.Info, contentDescription = "Disclaimer")
+                }
+                if (disclaimer){
+                    VegInfoDialog(
+                        text = "As much as the gathered info of the app belongs to reliable sources," +
+                                " it is always recommended to seek professional help for personalized training" +
+                                " and Diet Plans. Also, Follow the diet plan carefully, the diet part is still" +
+                                "under development",
+                        onClose = { disclaimer = !disclaimer })
+                }
                 Text(
                     text = "HealthEase",
                     textAlign = TextAlign.Center,
@@ -77,9 +99,9 @@ fun GameTopAppBar(
 
 @Composable
 fun HealthEase(
+    modifier: Modifier = Modifier,
     navigationViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory),
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
 ) {
 
     Scaffold(
