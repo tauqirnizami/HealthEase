@@ -67,7 +67,7 @@ fun StreakCounterScreen(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "days of streak!",
+                    text = "-day streak!",
                     modifier = modifier
                         .padding(11.dp),
                     textAlign = TextAlign.Center,
@@ -90,7 +90,7 @@ fun StreakCounterScreen(
 
                 var dateData: AppData?/* = dateDataList[0] ?: null*/
                 dateData = if (dateDataList.isNotEmpty())
-                    dateDataList[0]
+                    dateDataList[dateDataList.size-1]
                 else null
 
 //                    dateData = streakCounterScreenViewModel.streakDataHandler()
@@ -107,7 +107,7 @@ fun StreakCounterScreen(
 
                 var streakData: AppData?/* = streakDataList[0] ?: null*/
                 streakData = if (streakDataList.isNotEmpty())
-                    streakDataList[0]
+                    streakDataList[streakDataList.size-1]
                 else null
 //                var streakData: AppData? = null
 //                LaunchedEffect(Unit) {
