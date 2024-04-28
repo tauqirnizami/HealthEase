@@ -34,7 +34,7 @@ fun StreakCounter(
 
     var lastDateObject: AppData?/* = lastDateObjectList[0] ?: null*/
     lastDateObject = if (lastDateObjectList.isNotEmpty())
-        lastDateObjectList[lastDateObjectList.size-1]
+        lastDateObjectList[0]
     else null
 //        lastDateObject = streakCounterViewModel.streakDataHandler()
 //    }
@@ -43,7 +43,7 @@ fun StreakCounter(
         var lastDate = lastDateObject?.content ?: "00-00-0000"
 
     if (lastDateObjectList.size>1){/*TODO*/
-        for (i in 0 until lastDateObjectList.size-1){
+        for (i in 1 until lastDateObjectList.size){
             LaunchedEffect (Unit){
                 streakCounterViewModel.deleteData(id = lastDateObjectList[i]!!.id,
                     type = lastDateObjectList[i]!!.type,
@@ -68,7 +68,7 @@ fun StreakCounter(
 
     var currentStreakObject: AppData?/* = currentStreakObjectList[0] ?: null*/
     currentStreakObject = if (currentStreakObjectList.isNotEmpty())
-        currentStreakObjectList[currentStreakObjectList.size-1]
+        currentStreakObjectList[0]
     else null
 //    var currentStreak: String = "0"
 
@@ -76,7 +76,7 @@ fun StreakCounter(
         var currentStreak = currentStreakObject?.content ?: "0"
 //    }
     if (currentStreakObjectList.size>1){/*TODO*/
-        for (i in 0 until currentStreakObjectList.size-1){
+        for (i in 1 until currentStreakObjectList.size){
             LaunchedEffect (Unit){
             streakCounterViewModel.deleteData(id = currentStreakObjectList[i]!!.id,
                 type = currentStreakObjectList[i]!!.type,
