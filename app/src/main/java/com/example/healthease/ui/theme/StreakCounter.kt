@@ -2,6 +2,10 @@ package com.example.healthease.ui.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.data.AppData
@@ -17,24 +21,50 @@ fun StreakCounter(
     val currentRetrievedDate: Date = Date()
     val currentDate: String = SimpleDateFormat("dd-MM-yyyy").format(currentRetrievedDate)
 
-    var lastDateObject: AppData? = null
-    LaunchedEffect(Unit) {
-        lastDateObject = streakCounterViewModel.streakDataHandler()
-    }
-    var lastDate: String = "00-00-0000"
-    if (lastDateObject != null) {
-        lastDate = lastDateObject!!.content
+//    var lastDateObject: AppData? = null
+//    LaunchedEffect(Unit) {
+    var lastDateObjectList by remember { mutableStateOf(emptyList<AppData>()) }
+
+    LaunchedEffect(streakCounterViewModel) {
+        streakCounterViewModel.appDataRepository.getDataStream("lastDate")
+            .collect { newDataList ->
+                lastDateObjectList = newDataList as List<AppData>
+            }
     }
 
-    var currentStreakObject: AppData? = null
-    LaunchedEffect(Unit) {
-        currentStreakObject = streakCounterViewModel.streakDataHandler("currentStreak")
-    }
-    var currentStreak: String = "0"
+    var lastDateObject: AppData?/* = lastDateObjectList[0] ?: null*/
+    lastDateObject = if (lastDateObjectList.isNotEmpty())
+        lastDateObjectList[0]
+    else null
+//        lastDateObject = streakCounterViewModel.streakDataHandler()
+//    }
+//    var lastDate: String = "00-00-0000"
+//    if (lastDateObject != null) {
+        var lastDate = lastDateObject?.content ?: "00-00-0000"
+//    }
 
-    if (currentStreakObject != null) {
-        currentStreak = currentStreakObject!!.content
+//    var currentStreakObject: AppData? = null
+//    LaunchedEffect(Unit) {
+//        currentStreakObject = streakCounterViewModel.streakDataHandler("currentStreak")
+//    }
+    var currentStreakObjectList by remember { mutableStateOf(emptyList<AppData>()) }
+
+    LaunchedEffect(streakCounterViewModel) {
+        streakCounterViewModel.appDataRepository.getDataStream("currentStreak")
+            .collect { newDataList ->
+                currentStreakObjectList = newDataList as List<AppData>
+            }
     }
+
+    var currentStreakObject: AppData?/* = currentStreakObjectList[0] ?: null*/
+    currentStreakObject = if (currentStreakObjectList.isNotEmpty())
+        currentStreakObjectList[0]
+    else null
+//    var currentStreak: String = "0"
+
+//    if (currentStreakObject != null) {
+        var currentStreak = currentStreakObject?.content ?: "0"
+//    }
 
     var currentStreakInt = currentStreak.toInt()
 
@@ -78,7 +108,7 @@ fun StreakCounter(
     }
     currentDateYearInt = currentDateYear.toInt()
 
-    if ((((currentDateDayInt == lastDateDayInt + 1) ||
+    if (((((currentDateDayInt == lastDateDayInt + 1) && (lastDateMonthInt == currentDateMonthInt)) ||
                 ((((lastDateMonthInt == 1) && (currentDateMonthInt == 2)) || ((lastDateMonthInt == 3) && (currentDateMonthInt == 4)) || ((lastDateMonthInt == 5) && (currentDateMonthInt == 6)) || ((lastDateMonthInt == 7) && (currentDateMonthInt == 8)) || ((lastDateMonthInt == 8) && (currentDateMonthInt == 9)) || ((lastDateMonthInt == 10) && (currentDateMonthInt == 11))) && ((lastDateDayInt == 31) && (currentDateDayInt == 1))) ||
                 ((((lastDateMonthInt == 4) && (currentDateMonthInt == 5)) || ((lastDateMonthInt == 6) && (currentDateMonthInt == 7)) || ((lastDateMonthInt == 9) && (currentDateMonthInt == 10)) || ((lastDateMonthInt == 11) && (currentDateMonthInt == 12))) && ((lastDateDayInt == 30) && (currentDateDayInt == 1))) ||
                 ((((lastDateMonthInt == 2) && (currentDateMonthInt == 3)) && ((lastDateDayInt == 28) && (currentDateDayInt == 1))) && (currentDateYearInt % 4 != 0)) ||
@@ -145,6 +175,23 @@ fun StreakCounter(
                 streakCounterViewModel.saveData(
                     type = "currentStreak",
                     content = currentStreak
+                )
+            }
+        }
+
+        if (lastDateObject != null) {
+            LaunchedEffect(Unit) {
+                streakCounterViewModel.updateData(
+                    id = lastDateObject!!.id,
+                    type = lastDateObject!!.type,
+                    content = currentDate
+                )
+            }
+        } else {
+            LaunchedEffect(Unit) {
+                streakCounterViewModel.saveData(
+                    type = "lastDate",
+                    content = currentDate
                 )
             }
         }

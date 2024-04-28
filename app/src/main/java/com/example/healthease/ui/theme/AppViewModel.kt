@@ -76,6 +76,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
 
 class CalculationsViewModel(
@@ -1286,25 +1287,28 @@ class CalculationsViewModel(
     suspend fun updateData(id: Int, type: String, content: String) {
         appDataRepository.upsertData(AppData(id = id, type = type, content = content))
     }
-    suspend fun streakDataHandler(givenType: String = "lastDate"): AppData? {
+
+    /*fun streakDataHandler(givenType: String = "lastDate"): AppData? {
         val lastDateData: Flow<AppData?> = appDataRepository.getDataStream(givenType)
             .map { dataList ->
                 dataList.firstOrNull()
             }
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
+//        val coroutineScope = CoroutineScope(Dispatchers.Main)
         var data: AppData? = null
-        coroutineScope.launch {
+//        coroutineScope.launch {
+        runBlocking {
             lastDateData.collect { appData ->
-                if (appData != null) {
+                /*if (appData != null) {
                     data = appData
-                }
-                else {
+                } else {
                     data = null
-                }
+                }*/
+                data = appData
+//            }
             }
         }
         return data
-    }
+    }*/
 }
 
 
@@ -1455,72 +1459,72 @@ class ExerciseSearchViewModel() : ViewModel() {
     init {
         val chestWorkouts = mutableListOf<ChestExercises>()
         chestWorkouts.addAll(homeChestExercises)
-        homeChestListSize = chestWorkouts.size-1
+        homeChestListSize = chestWorkouts.size - 1
         chestWorkouts.addAll(gymChestExercises)
-        chestWorkouts.forEach(){
+        chestWorkouts.forEach() {
             chestExercisesName.add(it.name0)
         }
         chestWorkouts.clear()
 
         val shoulderExercises = mutableListOf<ShoulderExercises>()
         shoulderExercises.addAll(homeShoulderExercises)
-        homeShoulderListSize = shoulderExercises.size-1
+        homeShoulderListSize = shoulderExercises.size - 1
         shoulderExercises.addAll(gymShoulderExercises)
-        shoulderExercises.forEach(){
+        shoulderExercises.forEach() {
             shoulderExercisesName.add(it.name0)
         }
         shoulderExercises.clear()
 
         val tricepsExercises = mutableListOf<TricepsExercises>()
         tricepsExercises.addAll(homeTricepsExercises)
-        homeTricepsListSize = tricepsExercises.size-1
+        homeTricepsListSize = tricepsExercises.size - 1
         tricepsExercises.addAll(gymTricepsExercises)
-        tricepsExercises.forEach(){
+        tricepsExercises.forEach() {
             tricepsExercisesName.add(it.name0)
         }
         tricepsExercises.clear()
 
         val bicepsExercises = mutableListOf<BicepsExercises>()
         bicepsExercises.addAll(homeBicepsExercises)
-        homeBicepsListSize = bicepsExercises.size-1
+        homeBicepsListSize = bicepsExercises.size - 1
         bicepsExercises.addAll(gymBicepsExercises)
-        bicepsExercises.forEach(){
+        bicepsExercises.forEach() {
             bicepsExercisesName.add(it.name0)
         }
         bicepsExercises.clear()
 
         val backExercises = mutableListOf<BackExercises>()
         backExercises.addAll(homeBackExercises)
-        homeBackListSize = backExercises.size-1
+        homeBackListSize = backExercises.size - 1
         backExercises.addAll(gymBackExercises)
-        backExercises.forEach(){
+        backExercises.forEach() {
             backExercisesName.add(it.name0)
         }
         backExercises.clear()
 
         val legExercises = mutableListOf<LegExercises>()
         legExercises.addAll(homeLegExercises)
-        homeLegListSize = legExercises.size-1
+        homeLegListSize = legExercises.size - 1
         legExercises.addAll(gymLegsExercises)
-        legExercises.forEach(){
+        legExercises.forEach() {
             legExercisesName.add(it.name0)
         }
         legExercises.clear()
 
         val forearmsExercises = mutableListOf<ForearmsExercises>()
         forearmsExercises.addAll(homeForearmExercises)
-        homeForearmsListSize = forearmsExercises.size-1
+        homeForearmsListSize = forearmsExercises.size - 1
         forearmsExercises.addAll(gymForearmsExercises)
-        forearmsExercises.forEach(){
+        forearmsExercises.forEach() {
             forearmsExercisesName.add(it.name0)
         }
         forearmsExercises.clear()
 
         val absExercises = mutableListOf<AbsExercises>()
         absExercises.addAll(homeAbsExercises)
-        homeAbsListSize = absExercises.size-1
+        homeAbsListSize = absExercises.size - 1
         absExercises.addAll(gymAbsExercises)
-        absExercises.forEach(){
+        absExercises.forEach() {
             absExercisesName.add(it.name0)
         }
         absExercises.clear()
@@ -1540,12 +1544,11 @@ class ExerciseSearchViewModel() : ViewModel() {
         chestExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeChestListSize){
+                if (index > homeChestListSize) {
                     indexxx -= homeChestListSize
                     chestExercisesList.add(gymChestExercises[indexxx])
-                }
-                else{
-                chestExercisesList.add(homeChestExercises[indexxx])
+                } else {
+                    chestExercisesList.add(homeChestExercises[indexxx])
                 }
             }
         }
@@ -1553,11 +1556,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         shoulderExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeShoulderListSize){
+                if (index > homeShoulderListSize) {
                     indexxx -= homeShoulderListSize
                     shoulderExercisesList.add(gymShoulderExercises[indexxx])
-                }
-                else{
+                } else {
                     shoulderExercisesList.add(homeShoulderExercises[indexxx])
                 }
             }
@@ -1566,11 +1568,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         tricepsExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeTricepsListSize){
+                if (index > homeTricepsListSize) {
                     indexxx -= homeTricepsListSize
                     tricepsExercisesList.add(gymTricepsExercises[indexxx])
-                }
-                else{
+                } else {
                     tricepsExercisesList.add(homeTricepsExercises[indexxx])
                 }
             }
@@ -1579,11 +1580,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         bicepsExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeBicepsListSize){
+                if (index > homeBicepsListSize) {
                     indexxx -= homeBicepsListSize
                     bicepsExercisesList.add(gymBicepsExercises[indexxx])
-                }
-                else{
+                } else {
                     bicepsExercisesList.add(homeBicepsExercises[indexxx])
                 }
             }
@@ -1592,11 +1592,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         backExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeBackListSize){
+                if (index > homeBackListSize) {
                     indexxx -= homeBackListSize
                     backExercisesList.add(gymBackExercises[indexxx])
-                }
-                else{
+                } else {
                     backExercisesList.add(homeBackExercises[indexxx])
                 }
             }
@@ -1605,11 +1604,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         legExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeLegListSize){
+                if (index > homeLegListSize) {
                     indexxx -= homeLegListSize
                     legExercisesList.add(gymLegsExercises[indexxx])
-                }
-                else{
+                } else {
                     legExercisesList.add(homeLegExercises[indexxx])
                 }
             }
@@ -1618,11 +1616,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         forearmsExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeForearmsListSize){
+                if (index > homeForearmsListSize) {
                     indexxx -= homeForearmsListSize
                     forearmsExercisesList.add(gymForearmsExercises[indexxx])
-                }
-                else{
+                } else {
                     forearmsExercisesList.add(homeForearmExercises[indexxx])
                 }
             }
@@ -1631,11 +1628,10 @@ class ExerciseSearchViewModel() : ViewModel() {
         absExercisesName.forEachIndexed { index, it ->
             var indexxx = index
             if (it.contains(search, ignoreCase = true)) {
-                if (index > homeAbsListSize){
+                if (index > homeAbsListSize) {
                     indexxx -= homeAbsListSize
                     absExercisesList.add(gymAbsExercises[indexxx])
-                }
-                else{
+                } else {
                     absExercisesList.add(homeAbsExercises[indexxx])
                 }
             }
