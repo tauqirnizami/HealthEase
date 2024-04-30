@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.data.AppData
+import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -26,21 +27,13 @@ fun StreakCounter(
     var lastDateObjectList by remember { mutableStateOf(emptyList<AppData>()) }
 
     LaunchedEffect(streakCounterViewModel) {
-        streakCounterViewModel.appDataRepository.getDataStream("lastDate")
-            .collect { newDataList ->
-                lastDateObjectList = newDataList as List<AppData>
-            }
+        coroutineScope {
+            streakCounterViewModel.appDataRepository.getDataStream("lastDate")
+                .collect { newDataList ->
+                    lastDateObjectList = newDataList as List<AppData>
+                }
+        }
     }
-
-    var lastDateObject: AppData?/* = lastDateObjectList[0] ?: null*/
-    lastDateObject = if (lastDateObjectList.isNotEmpty())
-        lastDateObjectList[0]
-    else null
-//        lastDateObject = streakCounterViewModel.streakDataHandler()
-//    }
-//    var lastDate: String = "00-00-0000"
-//    if (lastDateObject != null) {
-        var lastDate = lastDateObject?.content ?: "00-00-0000"
 
     if (lastDateObjectList.size>1){/*TODO*/
         for (i in 1 until lastDateObjectList.size){
@@ -51,6 +44,17 @@ fun StreakCounter(
             }
         }
     }
+
+    val lastDateObject: AppData?/* = lastDateObjectList[0] ?: null*/
+    lastDateObject = if (lastDateObjectList.isNotEmpty())
+        lastDateObjectList[0]
+    else null
+//        lastDateObject = streakCounterViewModel.streakDataHandler()
+//    }
+//    var lastDate: String = "00-00-0000"
+//    if (lastDateObject != null) {
+        var lastDate = lastDateObject?.content ?: "00-00-0000"
+
 //    }
 
 //    var currentStreakObject: AppData? = null
@@ -60,21 +64,14 @@ fun StreakCounter(
     var currentStreakObjectList by remember { mutableStateOf(emptyList<AppData>()) }
 
     LaunchedEffect(streakCounterViewModel) {
-        streakCounterViewModel.appDataRepository.getDataStream("currentStreak")
-            .collect { newDataList ->
-                currentStreakObjectList = newDataList as List<AppData>
-            }
+        coroutineScope {
+            streakCounterViewModel.appDataRepository.getDataStream("currentStreak")
+                .collect { newDataList ->
+                    currentStreakObjectList = newDataList as List<AppData>
+                }
+        }
     }
 
-    var currentStreakObject: AppData?/* = currentStreakObjectList[0] ?: null*/
-    currentStreakObject = if (currentStreakObjectList.isNotEmpty())
-        currentStreakObjectList[0]
-    else null
-//    var currentStreak: String = "0"
-
-//    if (currentStreakObject != null) {
-        var currentStreak = currentStreakObject?.content ?: "0"
-//    }
     if (currentStreakObjectList.size>1){/*TODO*/
         for (i in 1 until currentStreakObjectList.size){
             LaunchedEffect (Unit){
@@ -85,14 +82,24 @@ fun StreakCounter(
         }
     } /*TODO*/
 
+    val currentStreakObject: AppData?/* = currentStreakObjectList[0] ?: null*/
+    currentStreakObject = if (currentStreakObjectList.isNotEmpty())
+        currentStreakObjectList[0]
+    else null
+//    var currentStreak: String = "0"
+
+//    if (currentStreakObject != null) {
+        var currentStreak = currentStreakObject?.content ?: "0"
+//    }
+
     var currentStreakInt = currentStreak.toInt()
 
     var lastDateDay: String = ""
-    var lastDateDayInt: Int
+    val lastDateDayInt: Int
     var lastDateMonth: String = ""
-    var lastDateMonthInt: Int
+    val lastDateMonthInt: Int
     var lastDateYear: String = ""
-    var lastDateYearInt: Int
+    val lastDateYearInt: Int
 
     for (i in 0..1) {
         lastDateDay += lastDate[i]
@@ -108,11 +115,11 @@ fun StreakCounter(
     lastDateYearInt = lastDateYear.toInt()
 
     var currentDateDay: String = ""
-    var currentDateDayInt: Int
+    val currentDateDayInt: Int
     var currentDateMonth: String = ""
-    var currentDateMonthInt: Int
+    val currentDateMonthInt: Int
     var currentDateYear: String = ""
-    var currentDateYearInt: Int
+    val currentDateYearInt: Int
 
     for (i in 0..1) {
         currentDateDay += currentDate[i]

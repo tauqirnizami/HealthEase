@@ -89,9 +89,7 @@ fun StreakCounterScreen(
                 }
 
                 var dateData: AppData?/* = dateDataList[0] ?: null*/
-                dateData = if (dateDataList.isNotEmpty())
-                    dateDataList[0]
-                else null
+                dateData = dateDataList.firstOrNull()
 
 //                    dateData = streakCounterScreenViewModel.streakDataHandler()
 //                }
@@ -106,9 +104,7 @@ fun StreakCounterScreen(
                 }
 
                 var streakData: AppData?/* = streakDataList[0] ?: null*/
-                streakData = if (streakDataList.isNotEmpty())
-                    streakDataList[0]
-                else null
+                streakData = streakDataList.firstOrNull()
 //                var streakData: AppData? = null
 //                LaunchedEffect(Unit) {
 //                    streakData = streakCounterScreenViewModel.streakDataHandler("currentStreak")
