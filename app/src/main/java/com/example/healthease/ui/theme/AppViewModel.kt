@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.healthease.DietData.BreakfastDiet
 import com.example.healthease.DietData.DinnerDiet
 import com.example.healthease.DietData.FoodData
@@ -69,11 +70,16 @@ import com.example.healthease.data.homeShoulderExercises
 import com.example.healthease.data.homeTricepsExercises
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -1288,27 +1294,44 @@ class CalculationsViewModel(
         appDataRepository.upsertData(AppData(id = id, type = type, content = content))
     }
 
-    /*fun streakDataHandler(givenType: String = "lastDate"): AppData? {
-        val lastDateData: Flow<AppData?> = appDataRepository.getDataStream(givenType)
-            .map { dataList ->
-                dataList.firstOrNull()
-            }
-//        val coroutineScope = CoroutineScope(Dispatchers.Main)
-        var data: AppData? = null
-//        coroutineScope.launch {
-        runBlocking {
-            lastDateData.collect { appData ->
-                /*if (appData != null) {
-                    data = appData
-                } else {
-                    data = null
-                }*/
-                data = appData
-//            }
-            }
+
+
+    private val selectedType: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    fun selectType(type: String) {
+        selectedType.value = type
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val appData: StateFlow<List<AppData>> = selectedType
+        .flatMapLatest { type ->
+            if (type == null) flowOf(emptyList())
+            else appDataRepository.getDataStream(type)
         }
-        return data
-    }*/
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList(),
+        )
+
+
+    private val streakSelectedType: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    fun streakSelectType(type: String) {
+        streakSelectedType.value = type
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val streakAppData: StateFlow<List<AppData>> = streakSelectedType
+        .flatMapLatest { type ->
+            if (type == null) flowOf(emptyList())
+            else appDataRepository.getDataStream(type)
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList(),
+        )
 }
 
 

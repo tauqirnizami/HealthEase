@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.data.AppData
 
@@ -77,52 +78,54 @@ fun StreakCounterScreen(
             } else {
                 currentStreak = "0"
 
-//                var dateData: AppData? = null
-//                LaunchedEffect(Unit) {
-                var dateDataList by remember { mutableStateOf(emptyList<AppData>()) }
+                streakCounterScreenViewModel.selectType("lastDate")
+                val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
 
-                LaunchedEffect(streakCounterScreenViewModel) {
-                    streakCounterScreenViewModel.appDataRepository.getDataStream("lastDate")
-                        .collect { newDataList ->
-                            dateDataList = newDataList as List<AppData>
+                if (dateDataList.size>1){/*TODO*/
+                    for (i in 1 until dateDataList.size){
+                        LaunchedEffect (Unit){
+                            streakCounterScreenViewModel.deleteData(id = dateDataList[i].id,
+                                type = dateDataList[i].type,
+                                content = dateDataList[i].content)
                         }
+                    }
                 }
 
-                var dateData: AppData?/* = dateDataList[0] ?: null*/
-                dateData = dateDataList.firstOrNull()
+                val dateData: AppData? = if (dateDataList.isNotEmpty())
+                    dateDataList[0]
+                else null
+                streakCounterScreenViewModel.streakSelectType("lastDate")
 
-//                    dateData = streakCounterScreenViewModel.streakDataHandler()
-//                }
 
-                var streakDataList by remember { mutableStateOf(emptyList<AppData>()) }
+                val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
 
-                LaunchedEffect(streakCounterScreenViewModel) {
-                    streakCounterScreenViewModel.appDataRepository.getDataStream("currentStreak")
-                        .collect { newDataList ->
-                            streakDataList = newDataList as List<AppData>
+                if (streakDataList.size>1){/*TODO*/
+                    for (i in 1 until streakDataList.size){
+                        LaunchedEffect (Unit){
+                            streakCounterScreenViewModel.deleteData(id = streakDataList[i].id,
+                                type = streakDataList[i].type,
+                                content = streakDataList[i].content)
                         }
+                    }
                 }
 
-                var streakData: AppData?/* = streakDataList[0] ?: null*/
-                streakData = streakDataList.firstOrNull()
-//                var streakData: AppData? = null
-//                LaunchedEffect(Unit) {
-//                    streakData = streakCounterScreenViewModel.streakDataHandler("currentStreak")
-//                }
+                val streakData: AppData? = if (dateDataList.isNotEmpty())
+                    dateDataList[0]
+                else null
 
                 if ((dateData != null) && (streakData != null)) {
                     LaunchedEffect(Unit) {
 
                         streakCounterScreenViewModel.updateData(
-                            id = dateData!!.id,
-                            type = dateData!!.type,
+                            id = dateData.id,
+                            type = dateData.type,
                             content = "00-00-0000"
                         )
                     }
                     LaunchedEffect(Unit) {
                         streakCounterScreenViewModel.updateData(
-                            id = streakData!!.id,
-                            type = streakData!!.type,
+                            id = streakData.id,
+                            type = streakData.type,
                             content = "0"
                         )
                     }
