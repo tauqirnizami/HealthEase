@@ -22,12 +22,14 @@ fun StreakCounter(
     streakCounterViewModel.selectType("lastDate")
     val lastDateObjectList by streakCounterViewModel.appData.collectAsStateWithLifecycle()
 
-    if (lastDateObjectList.size>1){/*TODO*/
-        for (i in 1 until lastDateObjectList.size){
-            LaunchedEffect (Unit){
-                streakCounterViewModel.deleteData(id = lastDateObjectList[i].id,
+    if (lastDateObjectList.size > 1) {
+        LaunchedEffect(Unit) {
+            for (i in 1 until lastDateObjectList.size) {
+                streakCounterViewModel.deleteData(
+                    id = lastDateObjectList[i].id,
                     type = lastDateObjectList[i].type,
-                    content = lastDateObjectList[i].content)
+                    content = lastDateObjectList[i].content
+                )
             }
         }
     }
@@ -36,25 +38,27 @@ fun StreakCounter(
         lastDateObjectList[0]
     else null
 
-        val lastDate = lastDateObject?.content ?: "00-00-0000"
+    val lastDate = lastDateObject?.content ?: "00-00-0000"
 
     streakCounterViewModel.streakSelectType("currentStreak")
     val currentStreakObjectList by streakCounterViewModel.streakAppData.collectAsStateWithLifecycle()
 
-    if (currentStreakObjectList.size>1){/*TODO*/
-        for (i in 1 until currentStreakObjectList.size){
-            LaunchedEffect (Unit){
-            streakCounterViewModel.deleteData(id = currentStreakObjectList[i].id,
-                type = currentStreakObjectList[i].type,
-                content = currentStreakObjectList[i].content)
+    if (currentStreakObjectList.size > 1) {
+        LaunchedEffect(Unit) {
+            for (i in 1 until currentStreakObjectList.size) {
+                streakCounterViewModel.deleteData(
+                    id = currentStreakObjectList[i].id,
+                    type = currentStreakObjectList[i].type,
+                    content = currentStreakObjectList[i].content
+                )
             }
         }
-    } /*TODO*/
+    }
 
     val currentStreakObject: AppData? = if (currentStreakObjectList.isNotEmpty())
         currentStreakObjectList[0]
     else null
-        var currentStreak = currentStreakObject?.content ?: "0"
+    var currentStreak = currentStreakObject?.content ?: "0"
 
     var currentStreakInt = currentStreak.toInt()
 
@@ -127,8 +131,8 @@ fun StreakCounter(
         if (lastDateObject != null) {
             LaunchedEffect(Unit) {
                 streakCounterViewModel.updateData(
-                    id = lastDateObject!!.id,
-                    type = lastDateObject!!.type,
+                    id = lastDateObject.id,
+                    type = lastDateObject.type,
                     content = currentDate
                 )
             }
@@ -140,17 +144,19 @@ fun StreakCounter(
                 )
             }
         }
-    } else if (currentDate == lastDate) {
-
-    } else {
+    }
+//    else if (currentDate == lastDate) {
+//
+//    }
+    else if (currentDate != lastDate) {
         currentStreakInt = 1
         currentStreak = "1"
         if (currentStreakObject != null) {
             LaunchedEffect(Unit) {
 
                 streakCounterViewModel.updateData(
-                    id = currentStreakObject!!.id,
-                    type = currentStreakObject!!.type,
+                    id = currentStreakObject.id,
+                    type = currentStreakObject.type,
                     content = currentStreak
                 )
             }
@@ -166,8 +172,8 @@ fun StreakCounter(
         if (lastDateObject != null) {
             LaunchedEffect(Unit) {
                 streakCounterViewModel.updateData(
-                    id = lastDateObject!!.id,
-                    type = lastDateObject!!.type,
+                    id = lastDateObject.id,
+                    type = lastDateObject.type,
                     content = currentDate
                 )
             }

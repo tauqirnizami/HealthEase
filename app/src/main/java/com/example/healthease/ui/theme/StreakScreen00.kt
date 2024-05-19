@@ -81,12 +81,14 @@ fun StreakCounterScreen(
                 streakCounterScreenViewModel.selectType("lastDate")
                 val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
 
-                if (dateDataList.size>1){/*TODO*/
-                    for (i in 1 until dateDataList.size){
-                        LaunchedEffect (Unit){
-                            streakCounterScreenViewModel.deleteData(id = dateDataList[i].id,
+                if (dateDataList.size > 1) {
+                    LaunchedEffect(Unit) {
+                        for (i in 1 until dateDataList.size) {
+                            streakCounterScreenViewModel.deleteData(
+                                id = dateDataList[i].id,
                                 type = dateDataList[i].type,
-                                content = dateDataList[i].content)
+                                content = dateDataList[i].content
+                            )
                         }
                     }
                 }
@@ -99,12 +101,14 @@ fun StreakCounterScreen(
 
                 val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
 
-                if (streakDataList.size>1){/*TODO*/
-                    for (i in 1 until streakDataList.size){
-                        LaunchedEffect (Unit){
-                            streakCounterScreenViewModel.deleteData(id = streakDataList[i].id,
+                if (streakDataList.size > 1) {
+                    LaunchedEffect(Unit) {
+                        for (i in 1 until streakDataList.size) {
+                            streakCounterScreenViewModel.deleteData(
+                                id = streakDataList[i].id,
                                 type = streakDataList[i].type,
-                                content = streakDataList[i].content)
+                                content = streakDataList[i].content
+                            )
                         }
                     }
                 }
