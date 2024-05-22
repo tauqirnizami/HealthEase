@@ -6,4 +6,6 @@ class OfflineAppDataRepository(private val appDataDao: AppDataDao) : AppDataRepo
     override fun getDataStream(type: String): Flow<List<AppData>> = appDataDao.getData(type)
     override suspend fun deleteData(data: AppData) = appDataDao.delete(data)
     override suspend fun upsertData(data: AppData) = appDataDao.upsert(data)
+
+//    override fun getDataList(type: String): List<AppData> = appDataDao.getDataList(type)
 }

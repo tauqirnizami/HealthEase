@@ -50,7 +50,7 @@ fun StreakCounterScreen(
         if (isStreakScreen) {
             val currentStreak: String
             if (yesOrNo) {
-                currentStreak = StreakCounter()
+                currentStreak = actualStreakCounter()
                 Text(
                     text = "Congratulations! Your have a",
                     modifier = modifier
@@ -79,42 +79,43 @@ fun StreakCounterScreen(
                 currentStreak = "0"
 
                 streakCounterScreenViewModel.selectType("lastDate")
-                val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
+                val pair = streakCounter01()
+//                val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
 
-                if (dateDataList.size > 1) {
+                if (pair.first.size > 1) {
                     LaunchedEffect(Unit) {
-                        for (i in 1 until dateDataList.size) {
+                        for (i in 1 until pair.first.size) {
                             streakCounterScreenViewModel.deleteData(
-                                id = dateDataList[i].id,
-                                type = dateDataList[i].type,
-                                content = dateDataList[i].content
+                                id = pair.first[i].id,
+                                type = pair.first[i].type,
+                                content = pair.first[i].content
                             )
                         }
                     }
                 }
 
-                val dateData: AppData? = if (dateDataList.isNotEmpty())
-                    dateDataList[0]
+                val dateData: AppData? = if (pair.first.isNotEmpty())
+                    pair.first[0]
                 else null
-                streakCounterScreenViewModel.streakSelectType("lastDate")
 
 
-                val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
+                streakCounterScreenViewModel.streakSelectType("currentStreak")
+//                val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
 
-                if (streakDataList.size > 1) {
+                if (pair.second.size > 1) {
                     LaunchedEffect(Unit) {
-                        for (i in 1 until streakDataList.size) {
+                        for (i in 1 until pair.second.size) {
                             streakCounterScreenViewModel.deleteData(
-                                id = streakDataList[i].id,
-                                type = streakDataList[i].type,
-                                content = streakDataList[i].content
+                                id = pair.second[i].id,
+                                type = pair.second[i].type,
+                                content = pair.second[i].content
                             )
                         }
                     }
                 }
 
-                val streakData: AppData? = if (dateDataList.isNotEmpty())
-                    dateDataList[0]
+                val streakData: AppData? = if (pair.second.isNotEmpty())
+                    pair.second[0]
                 else null
 
                 if ((dateData != null) && (streakData != null)) {

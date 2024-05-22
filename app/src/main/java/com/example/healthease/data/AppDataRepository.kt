@@ -8,4 +8,6 @@ interface AppDataRepository {
     suspend fun upsertData(data: AppData)
 
     suspend fun deleteData(data: AppData)
+
+//    fun getDataList(type: String): List<AppData>
 }

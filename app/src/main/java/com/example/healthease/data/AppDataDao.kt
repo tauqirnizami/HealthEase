@@ -16,4 +16,7 @@ interface AppDataDao {
 
     @Query("SELECT * from appData WHERE type = :type ORDER BY id DESC")
     fun getData(type: String): Flow<List<AppData>>
+
+//    @Query("SELECT * from appData WHERE type = :type ORDER BY id DESC")
+//    fun getDataList(type: String): List<AppData>
 }

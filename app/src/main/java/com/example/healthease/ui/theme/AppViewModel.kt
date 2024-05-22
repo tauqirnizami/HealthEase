@@ -76,6 +76,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -1285,6 +1286,11 @@ class CalculationsViewModel(
     suspend fun retrieveData(type: String) {
         appDataRepository.getDataStream(type)
     }
+//    val lastDate = appDataRepository.getDataStream("lastDate").first()
+//    val currentStreak = appDataRepository.getDataStream("currentStreak").first()
+
+//    val lastDate = appDataRepository.getDataList("lastDate")
+//    val currentStreak = appDataRepository.getDataList("currentStreak")
 
     suspend fun deleteData(id: Int, type: String, content: String) {
         appDataRepository.deleteData(AppData(id = id, type = type, content = content))
