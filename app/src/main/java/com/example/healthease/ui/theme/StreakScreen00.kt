@@ -157,7 +157,9 @@ fun StreakCounterScreen(
             Spacer(modifier = Modifier.height(21.dp))
 
             Text(
-                text = "Did You Do Your Workout And Followed A Healthy Diet Plan?",
+                text = "Did You Do Your Workout And Followed A Healthy Diet Plan?\n" +
+                        "You can change your choice as long as the app is open.\n" +
+                        "If the date changes while you're using the app, you'll need to restart it to see your new streak.",
                 textAlign = TextAlign.Center
             )
 
