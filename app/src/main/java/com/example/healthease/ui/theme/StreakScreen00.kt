@@ -23,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.data.AppData
 
@@ -78,9 +77,7 @@ fun StreakCounterScreen(
             } else {
                 currentStreak = "0"
 
-//                streakCounterScreenViewModel.selectType("lastDate")
                 val pair = streakCounter01(streakCounterViewModel = streakCounterScreenViewModel)
-//                val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
 
                 if (pair.first.size > 1) {
                     LaunchedEffect(Unit) {
@@ -97,10 +94,6 @@ fun StreakCounterScreen(
                 val dateData: AppData? = if (pair.first.isNotEmpty())
                     pair.first[0]
                 else null
-
-
-//                streakCounterScreenViewModel.streakSelectType("currentStreak")
-//                val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
 
                 if (pair.second.size > 1) {
                     LaunchedEffect(Unit) {

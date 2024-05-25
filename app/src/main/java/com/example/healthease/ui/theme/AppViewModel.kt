@@ -68,22 +68,11 @@ import com.example.healthease.data.homeForearmExercises
 import com.example.healthease.data.homeLegExercises
 import com.example.healthease.data.homeShoulderExercises
 import com.example.healthease.data.homeTricepsExercises
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
 
 class CalculationsViewModel(
@@ -1283,14 +1272,9 @@ class CalculationsViewModel(
         appDataRepository.upsertData(AppData(type = type, content = content))
     }
 
-    suspend fun retrieveData(type: String) {
-        appDataRepository.getDataStream(type)
-    }
-//    val lastDate = appDataRepository.getDataStream("lastDate").first()
-//    val currentStreak = appDataRepository.getDataStream("currentStreak").first()
-
-//    val lastDate = appDataRepository.getDataList("lastDate")
-//    val currentStreak = appDataRepository.getDataList("currentStreak")
+//    suspend fun retrieveData(type: String) {
+//        appDataRepository.getDataStream(type)
+//    }
 
     suspend fun deleteData(id: Int, type: String, content: String) {
         appDataRepository.deleteData(AppData(id = id, type = type, content = content))
@@ -1299,8 +1283,6 @@ class CalculationsViewModel(
     suspend fun updateData(id: Int, type: String, content: String) {
         appDataRepository.upsertData(AppData(id = id, type = type, content = content))
     }
-
-
 
 //    private val selectedType: MutableStateFlow<String?> = MutableStateFlow(null)
 //

@@ -2,23 +2,20 @@ package com.example.healthease.ui.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthease.data.AppData
-import kotlinx.coroutines.flow.toList
 import java.text.SimpleDateFormat
 import java.util.Date
 
 
 @Composable
 fun actualStreakCounter(
-//    pair: Pair<List<AppData>, List<AppData>>,
     actualStreakCounterViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ): String {
     val currentRetrievedDate = Date()
     val currentDate: String = SimpleDateFormat("dd-MM-yyyy").format(currentRetrievedDate)
     val pair = streakCounter01(streakCounterViewModel = actualStreakCounterViewModel)
+//    pair: Pair<List<AppData>, List<AppData>>,
 
     if (pair.first.size > 1) {
         LaunchedEffect(Unit) {
@@ -52,9 +49,7 @@ fun actualStreakCounter(
         }
     }
 
-    val currentStreakObject: AppData? = pair.second.firstOrNull()/*if (pair.second.isNotEmpty())
-        pair.second[0]
-    else null*/
+    val currentStreakObject: AppData? = pair.second.firstOrNull()
 
     var currentStreak = currentStreakObject?.content ?: "0"
 
@@ -151,10 +146,6 @@ fun actualStreakCounter(
             }
         }*/
     }
-//    else if (currentDate == lastDate) {
-//
-//    }
-//    else {
     else if (currentDate != lastDate){
     /*This block is for when the streak needs to be set to 1 such as when user logged in after more than 1 day,
     * or when the user logged in for the first time
@@ -216,9 +207,6 @@ fun streakCounter01(
 //
 //    streakCounterViewModel.streakSelectType("currentStreak")
 //    val currentStreakObjectList by streakCounterViewModel.streakAppData.collectAsStateWithLifecycle()
-//
-//    val lastDateObjectList = streakCounterViewModel.lastDate
-//    val currentStreakObjectList = streakCounterViewModel.currentStreak
 
     val lastDateObjectList = streakCounterViewModel.lastDate
     val currentStreakObjectList = streakCounterViewModel.currentStreak
