@@ -50,7 +50,7 @@ fun StreakCounterScreen(
         if (isStreakScreen) {
             val currentStreak: String
             if (yesOrNo) {
-                currentStreak = actualStreakCounter()
+                currentStreak = actualStreakCounter(actualStreakCounterViewModel = streakCounterScreenViewModel)
                 Text(
                     text = "Congratulations! Your have a",
                     modifier = modifier
@@ -78,8 +78,8 @@ fun StreakCounterScreen(
             } else {
                 currentStreak = "0"
 
-                streakCounterScreenViewModel.selectType("lastDate")
-                val pair = streakCounter01()
+//                streakCounterScreenViewModel.selectType("lastDate")
+                val pair = streakCounter01(streakCounterViewModel = streakCounterScreenViewModel)
 //                val dateDataList by streakCounterScreenViewModel.appData.collectAsStateWithLifecycle()
 
                 if (pair.first.size > 1) {
@@ -99,7 +99,7 @@ fun StreakCounterScreen(
                 else null
 
 
-                streakCounterScreenViewModel.streakSelectType("currentStreak")
+//                streakCounterScreenViewModel.streakSelectType("currentStreak")
 //                val streakDataList by streakCounterScreenViewModel.streakAppData.collectAsStateWithLifecycle()
 
                 if (pair.second.size > 1) {

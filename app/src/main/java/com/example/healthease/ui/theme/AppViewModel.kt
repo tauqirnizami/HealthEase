@@ -1302,42 +1302,50 @@ class CalculationsViewModel(
 
 
 
-    private val selectedType: MutableStateFlow<String?> = MutableStateFlow(null)
+//    private val selectedType: MutableStateFlow<String?> = MutableStateFlow(null)
+//
+//    fun selectType(type: String) {
+//        selectedType.value = type
+//    }
+//
+//    @OptIn(ExperimentalCoroutinesApi::class)
+//    val appData: StateFlow<List<AppData>> = selectedType
+//        .flatMapLatest { type ->
+//            if (type == null) flowOf(emptyList())
+//            else appDataRepository.getDataStream(type)
+//        }
+//        .stateIn(
+//            scope = viewModelScope,
+//            started = SharingStarted.WhileSubscribed(5_000),
+//            initialValue = emptyList(),
+//        )
+//
+//    private val streakSelectedType: MutableStateFlow<String?> = MutableStateFlow(null)
+//
+//    fun streakSelectType(type: String) {
+//        streakSelectedType.value = type
+//    }
+//
+//    @OptIn(ExperimentalCoroutinesApi::class)
+//    val streakAppData: StateFlow<List<AppData>> = streakSelectedType
+//        .flatMapLatest { type ->
+//            if (type == null) flowOf(emptyList())
+//            else appDataRepository.getDataStream(type)
+//        }
+//        .stateIn(
+//            scope = viewModelScope,
+//            started = SharingStarted.WhileSubscribed(5_000),
+//            initialValue = emptyList(),
+//        )
 
-    fun selectType(type: String) {
-        selectedType.value = type
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val appData: StateFlow<List<AppData>> = selectedType
-        .flatMapLatest { type ->
-            if (type == null) flowOf(emptyList())
-            else appDataRepository.getDataStream(type)
+    lateinit var lastDate: List<AppData>
+    lateinit var currentStreak: List<AppData>
+    init {
+        viewModelScope.launch {
+            lastDate = appDataRepository.getDataList("lastDate")
+            currentStreak = appDataRepository.getDataList("currentStreak")
         }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = emptyList(),
-        )
-
-
-    private val streakSelectedType: MutableStateFlow<String?> = MutableStateFlow(null)
-
-    fun streakSelectType(type: String) {
-        streakSelectedType.value = type
     }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val streakAppData: StateFlow<List<AppData>> = streakSelectedType
-        .flatMapLatest { type ->
-            if (type == null) flowOf(emptyList())
-            else appDataRepository.getDataStream(type)
-        }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = emptyList(),
-        )
 }
 
 

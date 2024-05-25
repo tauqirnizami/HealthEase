@@ -7,5 +7,5 @@ class OfflineAppDataRepository(private val appDataDao: AppDataDao) : AppDataRepo
     override suspend fun deleteData(data: AppData) = appDataDao.delete(data)
     override suspend fun upsertData(data: AppData) = appDataDao.upsert(data)
 
-//    override fun getDataList(type: String): List<AppData> = appDataDao.getDataList(type)
+    override suspend fun getDataList(type: String): List<AppData> = appDataDao.getDataList(type)
 }

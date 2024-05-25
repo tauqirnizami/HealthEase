@@ -18,7 +18,7 @@ fun actualStreakCounter(
 ): String {
     val currentRetrievedDate = Date()
     val currentDate: String = SimpleDateFormat("dd-MM-yyyy").format(currentRetrievedDate)
-    val pair = streakCounter01()
+    val pair = streakCounter01(streakCounterViewModel = actualStreakCounterViewModel)
 
     if (pair.first.size > 1) {
         LaunchedEffect(Unit) {
@@ -211,14 +211,17 @@ fun streakCounter01(
     streakCounterViewModel: CalculationsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 
 ): Pair<List<AppData>, List<AppData>> {
-    streakCounterViewModel.selectType("lastDate")
-    val lastDateObjectList by streakCounterViewModel.appData.collectAsStateWithLifecycle()
-
-    streakCounterViewModel.streakSelectType("currentStreak")
-    val currentStreakObjectList by streakCounterViewModel.streakAppData.collectAsStateWithLifecycle()
+//    streakCounterViewModel.selectType("lastDate")
+//    val lastDateObjectList by streakCounterViewModel.appData.collectAsStateWithLifecycle()
+//
+//    streakCounterViewModel.streakSelectType("currentStreak")
+//    val currentStreakObjectList by streakCounterViewModel.streakAppData.collectAsStateWithLifecycle()
 //
 //    val lastDateObjectList = streakCounterViewModel.lastDate
 //    val currentStreakObjectList = streakCounterViewModel.currentStreak
+
+    val lastDateObjectList = streakCounterViewModel.lastDate
+    val currentStreakObjectList = streakCounterViewModel.currentStreak
 
     return Pair(lastDateObjectList, currentStreakObjectList)
 }

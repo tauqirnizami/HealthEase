@@ -9,5 +9,5 @@ interface AppDataRepository {
 
     suspend fun deleteData(data: AppData)
 
-//    fun getDataList(type: String): List<AppData>
+    suspend fun getDataList(type: String): List<AppData>
 }

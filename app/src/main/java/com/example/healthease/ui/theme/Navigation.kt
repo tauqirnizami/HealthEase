@@ -190,7 +190,9 @@ fun HealthEase(
                 PostureScreen()
             }
             composable(ScreenNames.StreakCounter.name) {
-                StreakCounterScreen()
+                StreakCounterScreen(
+                    streakCounterScreenViewModel = navigationViewModel
+                )
             }
             composable(ScreenNames.Sports.name) {
                 SportsScreenList()
