@@ -195,6 +195,118 @@ fun OthersButtonScreen(
         button3 = "Motivational Quotes"
     )
 }
+/*@Composable
+fun StreakInstructionsScreen(
+    onClick1: () -> Unit,
+    onNavBack: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    Box(modifier = modifier) {
+        Image(
+            painter = painterResource(R.drawable.new_project__1__webp),
+            contentDescription = null,
+            modifier
+                .fillMaxSize()
+                .align(Alignment.TopCenter)
+        )
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(45.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Bottom
+        ) {
+            Button(
+                onClick = { onNavBack() },
+                modifier = modifier.fillMaxWidth(),
+                shape = CutCornerShape(
+                    bottomStart = 13.dp,
+                    topEnd = 13.dp,
+                    topStart = 5.dp,
+                    bottomEnd = 5.dp
+                ),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 10.dp,
+                    pressedElevation = 5.dp,
+                )
+            ) {
+                Text(
+                    text = "Back",
+                    fontSize = 25.sp,
+                    lineHeight = 27.sp,
+                    fontFamily = FontFamily(Font(R.font.facon)),
+                    textAlign = TextAlign.Center
+                )
+            }
+            Spacer(modifier = Modifier.height(71.dp))
+
+            Text(
+                text = "Instructions",
+                fontSize = 41.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(31.dp))
+
+            Text(
+                text = "1) Select yes only when you've completed proper workout of the day as well as followed" +
+                        " a proper healthy diet throughout the day! Although you may chose yes if you've taken" +
+                        " a routined rest day break from workout.\n",
+                modifier = modifier.padding(7.dp),
+                textAlign = TextAlign.Justify,
+                fontSize = 21.sp
+            )
+
+//            Spacer(modifier = Modifier.height(91.dp))
+
+            Text(
+                text = "2) Select no if either you didn't do proper workout or" +
+                        " if you didn't follow a proper diet plan today.\n",
+                modifier = modifier.padding(7.dp),
+                textAlign = TextAlign.Justify,
+                fontSize = 21.sp
+            )
+
+//            Spacer(modifier = Modifier.height(91.dp))
+
+            Text(
+                text = "3) You may change the option you chose as long as you're in the app's \"others\" section." +
+                        " Once you leave this section, the streak would be get saved accordingly" +
+                        " and you won't be able to change it later.",
+                modifier = modifier.padding(7.dp),
+                textAlign = TextAlign.Justify,
+                fontSize = 21.sp
+            )
+
+            Spacer(modifier = Modifier.height(71.dp))
+
+            Button(
+                onClick = { onClick1() },
+                modifier = modifier.fillMaxWidth(),
+                shape = CutCornerShape(
+                    bottomStart = 13.dp,
+                    topEnd = 13.dp,
+                    topStart = 5.dp,
+                    bottomEnd = 5.dp
+                ),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 10.dp,
+                    pressedElevation = 5.dp,
+                )
+            ) {
+                Text(
+                    text = "Got It!",
+                    fontSize = 25.sp,
+                    lineHeight = 27.sp,
+                    fontFamily = FontFamily(Font(R.font.facon)),
+                    textAlign = TextAlign.Center
+                )
+            }
+            Spacer(modifier = Modifier.height(41.dp))
+        }
+    }
+}*/
 
 
 @Composable

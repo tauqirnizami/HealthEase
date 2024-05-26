@@ -79,7 +79,7 @@ fun GameTopAppBar(
                         text = "Disclaimer:\nAs much as the gathered info of the app belongs to reliable sources," +
                                 " it is always recommended to seek professional help for personalized training" +
                                 " and Diet Plans. Also, Follow the diet plan carefully, the diet part is still" +
-                                "under development",
+                                " under development",
                         onClose = { disclaimer = !disclaimer })
                 }
                 Text(
